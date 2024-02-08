@@ -4,5 +4,4 @@
     "POSTGRES_PASSWORD": "password"
   },
   "postCreateCommand": "nohup bash -c 'pg_ctl init && pg_ctl start -l logfile &'"
-  }
 }
