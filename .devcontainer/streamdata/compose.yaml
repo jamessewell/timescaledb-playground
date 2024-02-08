@@ -13,7 +13,7 @@ services:
   shadowtraffic:
     platform: linux/amd64 
     image: shadowtraffic/shadowtraffic:latest
-    command: source ./streamdata/free-trial-license.env && java -jar /home/shadowtraffic.jar --config ./streamdata/pp.yaml &> st.log
+    command: source /workspaces/timescaledb-playground/streamdata/free-trial-license.env && java -jar /home/shadowtraffic.jar --config /workspaces/timescaledb-playground/streamdata/pp.yaml &> st.log
     volumes:
       - .:/workspace
 
