@@ -2,6 +2,6 @@
   "image": "timescale/timescaledb-ha:pg16",
   "containerEnv": {
     "POSTGRES_PASSWORD": "password"
-  }
+  },
   "postStartCommand": "pg_ctl initdb && pg_ctl start &"
 }
