@@ -5,8 +5,7 @@ version: '3.8'
 services:
   timescaledb:
     #platform: linux/amd64 
-    #image: timescale/timescaledb-ha:pg16
-    image: shadowtraffic/shadowtraffic:latest
+    image: timescale/timescaledb-ha:pg16
     command: sleep infinity
     volumes:
       - .:/workspace
@@ -14,7 +13,7 @@ services:
   shadowtraffic:
     #platform: linux/arm64 
     image: shadowtraffic/shadowtraffic:latest
-    command: source /workspaces/timescaledb-playground/streamdata/free-trial-license.env && java -jar /home/shadowtraffic.jar --config /workspaces/timescaledb-playground/streamdata/pp.yaml &> st.log
+    entrypoint: source streamdata/free-trial-license.env && java -jar /home/shadowtraffic.jar --config streamdata/pp.yaml &> st.log
     volumes:
       - .:/workspace
 
