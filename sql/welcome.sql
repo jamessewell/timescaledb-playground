@@ -1,5 +1,9 @@
 -- Welcome to the TimescaleDB GitHub Codespace tutorial!
 
+-- You should see a psql session start in the terminal
+-- below, when it's ready you will see a TimescaleDB
+-- banner.
+
 -- You can run the SQL below either by copy and pasting it,
 -- or by running the following in the psql session
 
