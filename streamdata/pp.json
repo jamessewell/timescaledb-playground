@@ -1,0 +1,129 @@
+{
+  "generators": [
+    {
+      "table": "sensors",
+      "vars": {
+        "id": {
+          "_gen": "oneOf",
+          "choices": {
+            "_gen": "stringSeries",
+            "bounds": [
+              1,
+              100
+            ],
+            "expr": "sensor-~d"
+          }
+        }
+      },
+      "row": {
+        "sensorid": {
+          "_gen": "var",
+          "var": "id"
+        },
+        "ts": {
+          "_gen": "weightedOneOf",
+          "choices": [
+            {
+              "weight": 98,
+              "value": {
+                "_gen": "toInstant",
+                "ms": {
+                  "_gen": "now"
+                }
+              }
+            },
+            {
+              "weight": 2,
+              "value": {
+                "_gen": "toInstant",
+                "ms": {
+                  "_gen": "subtract",
+                  "args": [
+                    {
+                      "_gen": "now"
+                    },
+                    {
+                      "_gen": "uniformDistribution",
+                      "bounds": [
+                        604800,
+                        604800000
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "stateMachine": {
+        "_gen": "stateMachine",
+        "for": {
+          "_gen": "var",
+          "var": "id"
+        },
+        "initial": "start",
+        "transitions": {
+          "start": "update",
+          "update": "update"
+        },
+        "states": {
+          "start": {
+            "row": {
+              "value": {
+                "_gen": "normalDistribution",
+                "mean": 50,
+                "sd": 5
+              }
+            }
+          },
+          "update": {
+            "row": {
+              "value": {
+                "_gen": "add",
+                "args": [
+                  {
+                    "_gen": "uniformDistribution",
+                    "bounds": [
+                      0,
+                      1000
+                    ]
+                  },
+                  {
+                    "_gen": "previousEvent",
+                    "path": [
+                      "row",
+                      "value"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "localConfigs": {
+        "throttle": {
+          "ms": {
+            "_gen": "uniformDistribution",
+            "bounds": [
+              0,
+              20 
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "connections": {
+    "pg": {
+      "kind": "postgres",
+      "connectionConfigs": {
+        "host": "timescaledb",
+        "port": 5432,
+        "username": "postgres",
+        "db": "postgres"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+version: '3.8'
+
+# This file contains settings specific developing inside the containers
+
+services:
+  timescaledb:
+    platform: linux/amd64 
+    image: timescale/timescaledb-ha:pg16
+    command: sleep infinity
+    volumes:
+      - .:/workspace
+
+  shadowtraffic:
+    platform: linux/amd64 
+    image: shadowtraffic/shadowtraffic:latest
+    command: source ./streamdata/free-trial-license.env && java -jar /home/shadowtraffic.jar --config ./streamdata/pp.yaml &> st.log
+    volumes:
+      - .:/workspace
+

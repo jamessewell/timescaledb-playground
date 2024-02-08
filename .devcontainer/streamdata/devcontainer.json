@@ -1,8 +1,9 @@
 {
   "name": "timescaledb-tutorial",
-  "image": "timescale/timescaledb-ha:pg16",
+  "dockerComposeFile": "./compose.yaml",
+  "service": "timescaledb",
   "postCreateCommand": {
-	"database": "pg_ctl init && pg_ctl start -l $HOME/logfile'",
+	"database": "pg_ctl init && pg_ctl start -l $HOME/logfile & psql -c ./streamdata/init.sql'",
 	"psql": "echo 'CREATE EXTENSION IF NOT EXISTS timescaledb; CREATE EXTENSION IF NOT EXISTS timescaledb_toolkit' >> $HOME/.psqlrc"
   },
   "postAttachCommand": "psql",
