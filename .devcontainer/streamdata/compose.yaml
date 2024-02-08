@@ -13,7 +13,7 @@ services:
   shadowtraffic:
     #platform: linux/arm64 
     image: shadowtraffic/shadowtraffic:latest
-    command: "--config streamdata/pp.yaml"
+    command: ["--config",  "/workspaces/timescaledb-playground/streamdata/pp.yaml"],
     volumes:
       - .:/workspace
     environment:
