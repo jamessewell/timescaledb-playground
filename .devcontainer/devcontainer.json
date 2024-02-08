@@ -1,3 +1,6 @@
 {
-  "image": "timescale/timescaledb-ha:pg16"
+  "image": "timescale/timescaledb-ha:pg16",
+  "containerEnv": {
+    "POSTGRES_PASSWORD": "password"
+  }
 }
