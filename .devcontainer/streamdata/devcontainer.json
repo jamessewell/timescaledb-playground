@@ -4,8 +4,7 @@
   "service": "timescaledb",
   "runServices": ["timescaledb", "shadowtraffic"],
   "postCreateCommand": {
-	"database": "pg_ctl init && pg_ctl start -l $HOME/logfile & psql -f ./streamdata/init.sql'",
-	"psql": "echo 'CREATE EXTENSION IF NOT EXISTS timescaledb; CREATE EXTENSION IF NOT EXISTS timescaledb_toolkit' >> $HOME/.psqlrc"
+	"database": "pg_ctl init && pg_ctl start -l $HOME/logfile && psql -f ./streamdata/init.sql'"
   },
   "postAttachCommand": "psql",
     "customizations": {
