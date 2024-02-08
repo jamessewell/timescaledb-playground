@@ -1,11 +1,8 @@
 {
   "name": "timescaledb-tutorial",
   "dockerComposeFile": "./compose.yaml",
-  "service": "timescaledb",
+  "service": "shadowtraffic",
   "runServices": ["shadowtraffic", "timescaledb"],
-  "postCreateCommand": {
-	"database": "pg_ctl init && pg_ctl start -l $HOME/logfile && psql -f ./streamdata/init.sql"
-  },
   "postAttachCommand": "psql",
     "customizations": {
         "codespaces": {
