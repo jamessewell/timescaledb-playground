@@ -3,5 +3,8 @@
   "containerEnv": {
     "POSTGRES_PASSWORD": "password"
   },
-  "postStartCommand": "pg_ctl initdb && pg_ctl start &"
+  "postCreateCommand": {
+    "init": "pg_ctl init",
+    "start": "nohup bash -c 'pg_ctl start -l logfile &'"
+  }
 }
