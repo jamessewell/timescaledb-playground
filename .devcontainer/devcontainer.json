@@ -2,9 +2,9 @@
   "name": "timescaledb-tutorial",
   "image": "timescale/timescaledb-ha:pg16",
   "postCreateCommand": {
-	"nohup bash -c 'pg_ctl init && pg_ctl start -l logfile &'",
-	"echo CREATE EXTENSION IF NOT EXISTS timescaledb > $HOME/.psqlrc",
-	"echo CREATE EXTENSION IF NOT EXISTS timescaledb_toolkit >> $HOME/.psqlrc"
+	"database": "nohup bash -c 'pg_ctl init && pg_ctl start -l logfile &'",
+	"timescale": "echo CREATE EXTENSION IF NOT EXISTS timescaledb > $HOME/.psqlrc",
+	"toolkit": "echo CREATE EXTENSION IF NOT EXISTS timescaledb_toolkit >> $HOME/.psqlrc"
   },
   "postAttachCommand": "psql",
     "customizations": {
