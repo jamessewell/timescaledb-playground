@@ -13,7 +13,7 @@ services:
   shadowtraffic:
     #platform: linux/arm64 
     image: shadowtraffic/shadowtraffic:latest
-    entrypoint: source streamdata/free-trial-license.env && java -jar /home/shadowtraffic.jar --config streamdata/pp.yaml &> st.log
+    entrypoint: ["source streamdata/free-trial-license.env && java -jar /home/shadowtraffic.jar --config streamdata/pp.yaml &> st.log"]
     volumes:
       - .:/workspace
 
