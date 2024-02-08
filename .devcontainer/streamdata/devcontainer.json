@@ -2,8 +2,9 @@
   "name": "timescaledb-tutorial",
   "dockerComposeFile": "./compose.yaml",
   "service": "timescaledb",
+  "runServices": ["timescaledb", "shadowtraffic"],
   "postCreateCommand": {
-	"database": "pg_ctl init && pg_ctl start -l $HOME/logfile & psql -c ./streamdata/init.sql'",
+	"database": "pg_ctl init && pg_ctl start -l $HOME/logfile & psql -f ./streamdata/init.sql'",
 	"psql": "echo 'CREATE EXTENSION IF NOT EXISTS timescaledb; CREATE EXTENSION IF NOT EXISTS timescaledb_toolkit' >> $HOME/.psqlrc"
   },
   "postAttachCommand": "psql",
