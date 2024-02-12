@@ -13,7 +13,8 @@ services:
   shadowtraffic:
     #platform: linux/arm64 
     image: shadowtraffic/shadowtraffic:latest
-    command: "--config ./streamdata/json.yaml"
+    #entrypoint: ["java", "--jar", "/home/shadowtraffic.jar"]
+    command: "--config ./streamdata/json.json"
     volumes:
       - .:/workspace
     environment:
