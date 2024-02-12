@@ -6,13 +6,14 @@ services:
   timescaledb:
     #platform: linux/amd64 
     image: timescale/timescaledb-ha:pg16
-    command: sleep infinity
+    command: pg_ctl initdb && postgres 
     volumes:
       - .:/workspace
 
   shadowtraffic:
     #platform: linux/arm64 
     image: shadowtraffic/shadowtraffic:latest
+    #entrypoiont: sleep infinity
     entrypoint: ["java", "--jar", "/home/shadowtraffic.jar"]
     command: ["--config", "/workspaces/timescaledb-playground/streamdata/sensors.json"]
     volumes:
