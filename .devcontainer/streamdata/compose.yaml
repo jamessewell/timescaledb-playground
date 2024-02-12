@@ -6,16 +6,23 @@ services:
   timescaledb:
     #platform: linux/amd64 
     image: timescale/timescaledb-ha:pg16
-    command: pg_ctl init && postgres 
-    #command: sleep infinity
     volumes:
       - .:/workspace
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 30s
+      timeout: 10s
 
   shadowtraffic:
+    depends_on:
+      timescaledb:
+        condition: service_healthy
     #platform: linux/arm64 
     image: shadowtraffic/shadowtraffic:latest
     #entrypoiont: sleep infinity
-    entrypoint: ["java", "--jar", "/home/shadowtraffic.jar"]
+    entrypoint: ["java", "-jar", "/home/shadowtraffic.jar"]
     command: ["--config", "/workspaces/timescaledb-playground/streamdata/sensors.json"]
     volumes:
       - .:/workspace
