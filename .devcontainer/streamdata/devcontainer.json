@@ -3,6 +3,9 @@
   "dockerComposeFile": "./compose.yaml",
   "service": "timescaledb",
   "runServices": ["shadowtraffic", "timescaledb"],
+  "postCreateCommand": {
+    "database": "psql -c ./streamdata/init.sql"
+  },
   "postAttachCommand": "psql",
   "customizations": {
       "codespaces": {
