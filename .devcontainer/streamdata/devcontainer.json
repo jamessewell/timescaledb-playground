@@ -4,12 +4,11 @@
   "service": "shadowtraffic",
   "runServices": ["shadowtraffic", "timescaledb"],
   "postAttachCommand": "psql",
-    "customizations": {
-        "codespaces": {
-            "openFiles": [
-                "./sql/welcome.sql"
-            ]
-        }
-  },
-  "waitFor": "onCreateCommand"
+  "customizations": {
+      "codespaces": {
+          "openFiles": [
+              "./sql/welcome.sql"
+          ]
+      }
+  }
 }
