@@ -6,7 +6,8 @@ services:
   timescaledb:
     #platform: linux/amd64 
     image: timescale/timescaledb-ha:pg16
-    command: pg_ctl initdb && postgres 
+    #command: pg_ctl initdb && postgres 
+    command: sleep infinity
     volumes:
       - .:/workspace
 
