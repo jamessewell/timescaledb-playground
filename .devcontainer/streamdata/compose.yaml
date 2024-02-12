@@ -14,6 +14,7 @@ services:
     #platform: linux/arm64 
     image: shadowtraffic/shadowtraffic:latest
     #command: "--config /workspaces/timescaledb-playground/streamdata/pp.yaml"
+    entrypoint: sleep infinity
     volumes:
       - .:/workspace
     environment:
