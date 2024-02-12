@@ -13,8 +13,8 @@ services:
   shadowtraffic:
     #platform: linux/arm64 
     image: shadowtraffic/shadowtraffic:latest
-    #entrypoint: ["java", "--jar", "/home/shadowtraffic.jar"]
-    command: "--config ./streamdata/sensors.json"
+    entrypoint: ["java", "--jar", "/home/shadowtraffic.jar"]
+    command: ["--config", "/workspaces/timescaledb-playground/streamdata/sensors.json"]
     volumes:
       - .:/workspace
     environment:
