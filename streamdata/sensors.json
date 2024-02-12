@@ -1,0 +1,88 @@
+{
+   "connections" : {
+      "pg" : {
+         "connectionConfigs" : {
+            "db" : "tsdb",
+            "host" : "ylexpw8tl9.jj7sbwx9ng.tsdb.cloud.timescale.com",
+            "password" : "cnscnscnscns",
+            "port" : 34025,
+            "username" : "tsdbadmin"
+         },
+         "kind" : "postgres"
+      }
+   },
+   "generators" : [
+      {
+         "fork" : {
+            "key" : {
+               "_gen" : "sequentialString",
+               "expr" : "sensor-~d"
+            },
+            "maxForks" : 10000,
+            "stagger" : {
+               "ms" : 25
+            }
+         },
+         "localConfigs" : {
+            "throttle" : {
+               "ms" : 10
+            }
+         },
+         "row" : {
+            "sensorId" : {
+               "_gen" : "var",
+               "var" : "forkKey"
+            },
+            "timestamp" : {
+               "_gen" : "toInstant",
+               "ms" : {
+                  "_gen" : "now"
+               }
+            }
+         },
+         "stateMachine" : {
+            "_gen" : "stateMachine",
+            "initial" : "start",
+            "states" : {
+               "start" : {
+                  "row" : {
+                     "value" : {
+                        "_gen" : "normalDistribution",
+                        "mean" : 50,
+                        "sd" : 5
+                     }
+                  }
+               },
+               "update" : {
+                  "row" : {
+                     "value" : {
+                        "_gen" : "add",
+                        "args" : [
+                           {
+                              "_gen" : "uniformDistribution",
+                              "bounds" : [
+                                 -1,
+                                 1
+                              ]
+                           },
+                           {
+                              "_gen" : "previousEvent",
+                              "path" : [
+                                 "row",
+                                 "value"
+                              ]
+                           }
+                        ]
+                     }
+                  }
+               }
+            },
+            "transitions" : {
+               "start" : "update",
+               "update" : "update"
+            }
+         },
+         "table" : "sensors"
+      }
+   ]
+}
