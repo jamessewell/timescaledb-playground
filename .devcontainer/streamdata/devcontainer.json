@@ -1,9 +1,10 @@
 {
   "name": "timescaledb-tutorial",
+  "remoteUser": "root",
   "dockerComposeFile": "./compose.yaml",
   "service": "timescaledb",
   "postCreateCommand": {
-    "database": "psql -f ./streamdata/init.sql",
+    "database": "psql -U postgres -f ./streamdata/init.sql",
     "psql": "cp ./streamdata/psqlrc ~/.psqlrc",
     "zbash": "echo psql >> ~/.bashrc"
   },
