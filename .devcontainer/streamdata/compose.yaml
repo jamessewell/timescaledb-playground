@@ -16,26 +16,14 @@ services:
       timeout: 10s
       retries: 10
 
-  schema:
-    depends_on:
-      timescaledb:
-        condition: service_healthy
-    image: timescale/timescaledb-ha:pg16
-    command: "psql -c 'CREATE TABLE sensors(a int)' -h timescaledb"
-    restart: "no"
-    healthcheck:
-      test: ["CMD", "psql -h timescaledb -c '\\d sensors'"]
-      interval: 1s
-      timeout: 10s
-      retries: 100
-
   shadowtraffic:
     depends_on:
-      schema:
+      timescaledb:
         condition: service_healthy
     #platform: linux/arm64 
     image: shadowtraffic/shadowtraffic:latest
     #entrypoiont: sleep infinity
+    restart: always 
     entrypoint: ["java", "-jar", "/home/shadowtraffic.jar"]
     command: ["--config", "/workspaces/timescaledb-playground/streamdata/sensors.json"]
     volumes:
