@@ -11,6 +11,8 @@
   "customizations": {
       "codespaces": {
           "openFiles": [
+	      "./streamdata/welcome.md",
+	      "./streamdata/init.sql",
 	      "../../workspace/sensors.json"
           ]
       }
