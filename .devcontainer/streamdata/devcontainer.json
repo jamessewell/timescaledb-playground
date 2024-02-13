@@ -3,9 +3,6 @@
   "dockerComposeFile": "./compose.yaml",
   "service": "shadowtraffic",
   "runServices": ["shadowtraffic", "timescaledb"],
-  "postCreateCommand": {
-     "database": "psql -f ./streamdata/init.sql"
-  },
   "postAttachCommand": "watch \"psql -c 'SELECT distinct on (sensorid) sensorid, ts, value as last_value FROM sensors ORDER BY sensorid, ts DESC'\"",
   "customizations": {
       "codespaces": {
@@ -17,10 +14,10 @@
   "forwardPorts": [
       "timescaledb:5432"
    ],
-   "portsAttributes": {
-         "timescaledb:5432": {
-             "label": "Database",
-             "onAutoForward": "silent"
-         }
-   }
+  "portsAttributes": {
+    "timescaledb:5432": {
+      "label": "Database",
+      "onAutoForward": "silent"
+    }
+  }
 }
