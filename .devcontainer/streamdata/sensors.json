@@ -1,7 +1,6 @@
 {
    "connections" : {
       "pg" : {
-         "tablePolicy": "dropAndCreate",
          "connectionConfigs" : {
             "db" : "postgres",
             "host" : "timescaledb",
@@ -18,9 +17,9 @@
                "_gen" : "sequentialString",
                "expr" : "sensor-~d"
             },
-            "maxForks" : 10000,
+            "maxForks" : 25,
             "stagger" : {
-               "ms" : 25
+               "ms" : 10
             }
          },
          "localConfigs" : {
