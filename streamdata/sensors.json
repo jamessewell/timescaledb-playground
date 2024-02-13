@@ -3,7 +3,8 @@
       "pg" : {
          "connectionConfigs" : {
             "db" : "postgres",
-            "host" : "timescaledb"
+            "host" : "timescaledb",
+            "port" : 5423,
             "username" : "postgres"
          },
          "kind" : "postgres"
