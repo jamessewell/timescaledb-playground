@@ -11,13 +11,27 @@ services:
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
-      test: ["CMD", "psql -c '\\d sensors'"]
-      interval: 30s
+      test: ["CMD", "pg_isready"]
+      interval: 10s
       timeout: 10s
+      retries: 10
+
+  schema:
+    depends_on:
+      timescaledb:
+        condition: service_healthy
+    image: timescale/timescaledb-ha:pg16
+    command: "psql -c 'CREATE TABLE sensors(a int)' -h timescaledb"
+    restart: "no"
+    healthcheck:
+      test: ["CMD", "psql -h timescaledb -c '\\d sensors'"]
+      interval: 1s
+      timeout: 10s
+      retries: 100
 
   shadowtraffic:
     depends_on:
-      timescaledb:
+      schema:
         condition: service_healthy
     #platform: linux/arm64 
     image: shadowtraffic/shadowtraffic:latest
