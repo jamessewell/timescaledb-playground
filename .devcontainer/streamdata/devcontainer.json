@@ -1,7 +1,7 @@
 {
   "name": "timescaledb-tutorial",
   "dockerComposeFile": "./compose.yaml",
-  "service": "shadowtraffic",
+  "service": "timescaledb",
   "runServices": ["shadowtraffic", "timescaledb"],
   "postAttachCommand": "watch \"psql -c 'SELECT distinct on (sensorid) sensorid, ts, value as last_value FROM sensors ORDER BY sensorid, ts DESC'\"",
   "customizations": {
