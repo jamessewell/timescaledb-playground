@@ -24,10 +24,9 @@ services:
     #entrypoint: sleep infinity
     restart: always 
     entrypoint: ["java", "-jar", "/home/shadowtraffic.jar"]
-    command: ["--config", "./sensors.json"]
+    command: ["--config", "/workspace/sensors.json"]
     volumes:
       - .:/workspace
-      - ./streamdata/sensors.json:/home/sensors.json
     environment:
       - LICENSE_ID=e44ffe2f-bc96-4000-86dc-0c3903ad582d
       - LICENSE_EMAIL=jsewell@timescale.com
