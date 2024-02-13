@@ -27,7 +27,7 @@ services:
     command: ["--config", "./sensors.json"]
     volumes:
       - .:/workspace
-      - ./streamdata/sensors.json:./sensors.json
+      - ./streamdata/sensors.json:/home/sensors.json
     environment:
       - LICENSE_ID=e44ffe2f-bc96-4000-86dc-0c3903ad582d
       - LICENSE_EMAIL=jsewell@timescale.com
