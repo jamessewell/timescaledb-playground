@@ -2,11 +2,9 @@
    "connections" : {
       "pg" : {
          "connectionConfigs" : {
-            "db" : "tsdb",
-            "host" : "ylexpw8tl9.jj7sbwx9ng.tsdb.cloud.timescale.com",
-            "password" : "cnscnscnscns",
-            "port" : 34025,
-            "username" : "tsdbadmin"
+            "db" : "postgres",
+            "host" : "timescaledb"
+            "username" : "postgres"
          },
          "kind" : "postgres"
       }
