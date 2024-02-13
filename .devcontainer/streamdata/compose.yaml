@@ -11,7 +11,7 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
       test: ["CMD", "pg_isready"]
-      interval: 15s
+      interval: 60s
       timeout: 10s
       retries: 10
 
