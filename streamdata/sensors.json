@@ -1,6 +1,7 @@
 {
    "connections" : {
       "pg" : {
+         "tablePolicy": "dropAndCreate",
          "connectionConfigs" : {
             "db" : "postgres",
             "host" : "timescaledb",
