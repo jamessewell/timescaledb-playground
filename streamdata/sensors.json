@@ -4,7 +4,7 @@
          "connectionConfigs" : {
             "db" : "postgres",
             "host" : "timescaledb",
-            "port" : 5423,
+            "port" : 5432,
             "username" : "postgres"
          },
          "kind" : "postgres"
@@ -28,11 +28,11 @@
             }
          },
          "row" : {
-            "sensorId" : {
+            "sensorid" : {
                "_gen" : "var",
                "var" : "forkKey"
             },
-            "timestamp" : {
+            "ts" : {
                "_gen" : "toInstant",
                "ms" : {
                   "_gen" : "now"
