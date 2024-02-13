@@ -21,10 +21,10 @@ services:
       timescaledb:
         condition: service_healthy
     image: shadowtraffic/shadowtraffic:latest
-    #entrypoint: sleep infinity
+    entrypoint: sleep infinity
     restart: always 
-    entrypoint: ["java", "-jar", "/home/shadowtraffic.jar"]
-    command: ["--config", "./streamdata/sensors.json"]
+    #entrypoint: ["java", "-jar", "/home/shadowtraffic.jar"]
+    #command: ["--config", "./streamdata/sensors.json"]
     volumes:
       - .:/workspace
     environment:
