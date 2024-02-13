@@ -11,7 +11,7 @@ services:
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
-      test: ["CMD", "psql -c '\d sensors'"]
+      test: ["CMD", "psql -c '\\d sensors'"]
       interval: 30s
       timeout: 10s
 
