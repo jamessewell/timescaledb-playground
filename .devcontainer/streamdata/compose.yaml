@@ -22,7 +22,7 @@ services:
         condition: service_healthy
     #platform: linux/arm64 
     image: shadowtraffic/shadowtraffic:latest
-    entrypoiont: sleep infinity
+    entrypoint: sleep infinity
     restart: always 
     #entrypoint: ["java", "-jar", "/home/shadowtraffic.jar"]
     #command: ["--config", "/workspaces/timescaledb-playground/streamdata/sensors.json"]
