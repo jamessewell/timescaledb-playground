@@ -16,16 +16,25 @@ services:
       timeout: 10s
       retries: 10
 
+  schema:
+    depends_on:
+      timescaledb:
+        condition: service_healthy
+    image: timescale/timescaledb-ha:pg16
+    volumes:
+      - .:/workspace
+    entrypoint: "psql -f ./streamdata/init.sql -h timescaledb"
+    command: ""
+
   shadowtraffic:
     depends_on:
       timescaledb:
         condition: service_healthy
-    #platform: linux/arm64 
     image: shadowtraffic/shadowtraffic:latest
-    #entrypoint: sleep infinity
+    entrypoint: sleep infinity
     restart: always 
-    entrypoint: ["java", "-jar", "/home/shadowtraffic.jar"]
-    command: ["--config", "./streamdata/sensors.json", "> file 2>&1"]
+    #entrypoint: ["java", "-jar", "/home/shadowtraffic.jar"]
+    #command: ["--config", "./streamdata/sensors.json"]
     volumes:
       - .:/workspace
     environment:
