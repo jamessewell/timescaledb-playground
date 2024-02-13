@@ -6,11 +6,11 @@
   "postCreateCommand": {
      "database": "psql -f ./streamdata/init.sql"
   },
-  "postAttachCommand": "psql",
+  "postAttachCommand": "watch \"psql -c 'SELECT distinct on (sensor_id), sensorid, ts, value as last_value FROM sensors ORDER BY sensor_id, ts DESC'\"",
   "customizations": {
       "codespaces": {
           "openFiles": [
-              "./sql/welcome.sql"
+              "./sensordata/sensors.json"
           ]
       }
   }
