@@ -4,10 +4,10 @@
   "service": "timescaledb",
   "postCreateCommand": {
     "database": "psql -f ./streamdata/init.sql",
-    "psql": "cp ./streamdata/psqlrc ~/.psqlrc"
+    "psql": "cp ./streamdata/psqlrc ~/.psqlrc",
+    "zbash": "echo psql >> ~/.bashrc"
   },
   "runServices": ["shadowtraffic", "timescaledb"],
-  "postAttachCommand": "psql",
   "customizations": {
       "codespaces": {
           "openFiles": [
