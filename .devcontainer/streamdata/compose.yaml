@@ -24,7 +24,7 @@ services:
     #entrypoint: sleep infinity
     restart: always 
     entrypoint: ["java", "-jar", "/home/shadowtraffic.jar"]
-    command: ["--config", "./streamdata/sensors.json"]
+    command: ["--config", "/workspaces/timescaledb-playground/streamdata/sensors.json"]
     volumes:
       - .:/workspace
     environment:
