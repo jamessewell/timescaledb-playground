@@ -1,8 +1,8 @@
 {
   "name": "timescaledb-tutorial",
   "dockerComposeFile": "./compose.yaml",
-  "service": "shadowtraffic",
-  "runServices": ["schema", "shadowtraffic", "timescaledb"],
+  "service": "timescaledb",
+  "runServices": ["shadowtraffic", "timescaledb"],
   "postCreateCommand": {
      "database": "psql -f ./streamdata/init.sql"
   },
@@ -13,14 +13,5 @@
               "./sensordata/sensors.json"
           ]
       }
-  },
-  "forwardPorts": [
-        "timescaledb:5432"
-  ],
-  "portsAttributes": {
-        "timescaledb:5432": {
-            "label": "Database",
-            "onAutoForward": "silent"
-        }
   }
 }
