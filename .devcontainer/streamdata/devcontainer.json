@@ -6,7 +6,7 @@
   "postCreateCommand": {
     "database": "psql -U postgres -f ./streamdata/init.sql",
     "psql": "cp ./streamdata/psqlrc ~/.psqlrc",
-    "zbash": "echo psql -U postgres >> ~/.bashrc"
+    "zbash": "echo psql -U postgres >> ~/.bashrc",
     "sleep": "sleep 5"
   },
   "runServices": ["shadowtraffic", "timescaledb"],
