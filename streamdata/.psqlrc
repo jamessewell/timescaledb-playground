@@ -1,0 +1,3 @@
+SELECT distinct on (sensorid) sensorid, ts, value as last_value FROM sensors ORDER BY sensorid, ts DESC;
+\timing
+\watch .5;

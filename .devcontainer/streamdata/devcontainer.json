@@ -3,10 +3,11 @@
   "dockerComposeFile": "./compose.yaml",
   "service": "timescaledb",
   "postCreateCommand": {
-    "database": "psql -f ./streamdata/init.sql"
+    "database": "psql -f ./streamdata/init.sql",
+    "psql": "cp ./streamdata/psqlrc ~/.psqlrc"
   },
   "runServices": ["shadowtraffic", "timescaledb"],
-  "postAttachCommand": "watch \"psql -c 'SELECT distinct on (sensorid) sensorid, ts, value as last_value FROM sensors ORDER BY sensorid, ts DESC'\"",
+  "postAttachCommand": "psql",
   "customizations": {
       "codespaces": {
           "openFiles": [
