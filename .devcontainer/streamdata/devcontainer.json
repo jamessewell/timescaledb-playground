@@ -8,6 +8,7 @@
     "psql": "cp ./streamdata/psqlrc ~/.psqlrc"
   },
   "runServices": ["shadowtraffic", "timescaledb"],
+  "postAttachCommand": "psql",
   "customizations": {
       "codespaces": {
           "openFiles": [
