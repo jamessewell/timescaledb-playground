@@ -3,12 +3,16 @@
   "remoteUser": "root",
   "dockerComposeFile": "./compose.yaml",
   "service": "timescaledb",
+  "onCreateCommand": {
+    "sleep": "sleep 5"
+  },
   "postCreateCommand": {
     "database": "psql -U postgres -f ./streamdata/init.sql",
     "psql": "cp ./streamdata/psqlrc ~/.psqlrc",
-    "zbash": "echo psql -U postgres >> ~/.bashrc",
-    "sleep": "sleep 5"
+    "zbash": "echo psql -U postgres >> ~/.bashrc"
   },
+  "postAttachCommand": "psql",
+  "waitFor": "onCreateCommand",
   "runServices": ["shadowtraffic", "timescaledb"],
   "customizations": {
       "codespaces": {

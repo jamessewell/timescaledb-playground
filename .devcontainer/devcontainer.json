@@ -5,7 +5,6 @@
 	"database": "pg_ctl init && pg_ctl start -l $HOME/logfile'",
 	"psql": "echo 'CREATE EXTENSION IF NOT EXISTS timescaledb; CREATE EXTENSION IF NOT EXISTS timescaledb_toolkit' >> $HOME/.psqlrc"
   },
-  "postAttachCommand": "psql",
     "customizations": {
         "codespaces": {
             "openFiles": [
@@ -13,5 +12,6 @@
             ]
         }
   },
+  "postAttachCommand": "psql",
   "waitFor": "onCreateCommand"
 }
