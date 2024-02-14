@@ -16,18 +16,5 @@
 	      "../../workspace/sensors.json"
           ]
       }
-  },
-  "forwardPorts": [
-      "timescaledb:5432"
-   ],
-  "portsAttributes": {
-    "timescaledb:5432": {
-      "label": "Database",
-      "onAutoForward": "silent"
-    }
-  },
-  "remoteUser": "root",
-  "features": {
-        "ghcr.io/devcontainers/features/docker-outside-of-docker": {}
   }
 }
