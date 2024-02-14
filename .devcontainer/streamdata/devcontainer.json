@@ -1,6 +1,5 @@
 {
   "name": "timescaledb-tutorial",
-  "remoteUser": "root",
   "dockerComposeFile": "./compose.yaml",
   "service": "timescaledb",
   "postCreateCommand": {
@@ -8,7 +7,7 @@
     "psql": "cp ./streamdata/psqlrc ~/.psqlrc"
   },
   "runServices": ["shadowtraffic", "timescaledb"],
-  "postAttachCommand": "psql -U postgres",
+  "postAttachCommand": "psql -U postgres > file",
   "customizations": {
       "codespaces": {
           "openFiles": [
@@ -27,6 +26,7 @@
       "onAutoForward": "silent"
     }
   },
+  "remoteUser": "root",
   "features": {
         "ghcr.io/devcontainers/features/docker-outside-of-docker": {}
   }
