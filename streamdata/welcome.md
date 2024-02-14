@@ -4,14 +4,18 @@
 
 This demo has started two containers:
 
-- a PostgreSQL container running TimescaleDB, and configured with a `sensors` hypertable to store readings
+This demo has started two containers:
+
+- a PostgreSQL+TimescaleDB container configured with a `sensors` hypertable to store readings
 - a ShadowTraffic container creating real-time sensor data and sending it to TimescaleDB
 
 Data is currently ingesting, you can see how it was configured in the other open files:
 - In the `sensors.json` tab to the left you can see the ShadowTraffic configration.
 - In the `init.sql` tab to the left you can see how our TimescaleDB schema was created
 
-The terminal below is running the following SQL query every 500ms (.5 seconds):
+A few seconds after startup the terminal below will start running the following SQL query 
+every 500ms (.5 seconds):
+
 
 ```sql
 SELECT DISTINCT ON (sensorid) sensorid, 
