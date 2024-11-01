@@ -1,17 +1,20 @@
 {
   "name": "timescaledb-tutorial",
-  "image": "timescale/timescaledb-ha:pg16",
+  "dockerComposeFile": "./compose.yaml",
+  "service": "timescaledb",
   "postCreateCommand": {
-	"database": "pg_ctl init && pg_ctl start -l $HOME/logfile'",
-	"psql": "echo 'CREATE EXTENSION IF NOT EXISTS timescaledb; CREATE EXTENSION IF NOT EXISTS timescaledb_toolkit' >> $HOME/.psqlrc"
+    "database": "psql -U postgres -f ./streamdata/init.sql",
+    "psql": "cp ./streamdata/psqlrc ~/.psqlrc"
   },
-    "customizations": {
-        "codespaces": {
-            "openFiles": [
-                "./sql/welcome.sql"
-            ]
-        }
-  },
-  "postAttachCommand": "psql",
-  "waitFor": "onCreateCommand"
+  "runServices": ["shadowtraffic", "timescaledb"],
+  "postAttachCommand": "psql -U postgres",
+  "customizations": {
+      "codespaces": {
+          "openFiles": [
+	      "./streamdata/welcome.md",
+	      "./streamdata/init.sql",
+	      "../../workspace/sensors.json"
+          ]
+      }
+  }
 }
