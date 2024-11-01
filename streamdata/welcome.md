@@ -4,8 +4,6 @@
 
 This demo has started two containers:
 
-This demo has started two containers:
-
 - a PostgreSQL+TimescaleDB container configured with a `sensors` hypertable to store readings
 - a ShadowTraffic container creating real-time sensor data and sending it to TimescaleDB
 
