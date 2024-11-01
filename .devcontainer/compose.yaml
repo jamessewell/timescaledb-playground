@@ -26,9 +26,9 @@ services:
     volumes:
       - .:/workspace
     environment:
-      - LICENSE_ID=e44ffe2f-bc96-4000-86dc-0c3903ad582d
+      - LICENSE_ID=d177fa5b-441f-4b20-8792-af903e495d70
       - LICENSE_EMAIL=jsewell@timescale.com
       - LICENSE_ORGANIZATION=Timescale
       - LICENSE_EDITION=ShadowTraffic Free Trial
-      - LICENSE_EXPIRATION=2024-05-08
-      - LICENSE_SIGNATURE=XZtcAnnZgM/WeBhH9mWT/kVpdtAoQvfaD3jN1a/KjFQtJkzN4srBZqEQ5+VTqYxMny6AU0gIGIOedoxzXGCMmyzAXEC5XBIBhoxZrMlnirdniyhmVNyTR+/+eQlRgE42UN6fUkTg+m6e3Qy++BBKR2TQ2MAZub+Tagos9BYh80DCNQopkXzprsm+7rsR4y5KBuLlAhOKpw+Re+0XsyMYSTVbTx055MJrq2wkvQqMwpoItLbqEEy7GFzSf6sToktnpZ46oNlVmqcp8FIJSMU5JRj8C6Uo92x1xZP71jYQVdUh1/8RMt+vmn/LrNWzsWNUsUdJ34q0cwjEnJW4D6I8GA==
+      - LICENSE_EXPIRATION=2024-12-01
+      - LICENSE_SIGNATURE=xfhrs9WC4qMdniapz1p1sxBC/Q8gjJOSIbt/TFoxVQ40+O6RUvQX6JuJ8+AMRBH5whv+FUYdofUOjCQ1Wmb9Gnvc+Le2qRN1BeW+eMtg5g0+D39ICbHUrtgfLP5kGO14lTgjWRTdtDuCrvlDfX6Nxj8x+XK46j/UWJF7AohTpg9fT2tp3Vks0DnJENUSUX90qIh4/9hLurWap7P0rt2zXjSeUzlaNXLe+pIUTNrRXtQnVkgz6GQwFnh3JZqsg4cfJhQ9X+flfiDiz0SHmICT2JjDVaOME5wS98/xptHp6qKUL6q0aKPaJaYAMuX7idH9okgrhifxjy1r3d7Uyc9tyg==
